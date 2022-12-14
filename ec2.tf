@@ -18,9 +18,16 @@ resource "aws_instance" "web1" {
         destination = "/tmp/nginx.sh"
     }
 
+    provisioner "file" {
+    	source = "ansible.sh"
+	destination = "/tmp/ansible.sh"
+    }
+
     provisioner "remote-exec" {
         inline = [
             "chmod +x /tmp/nginx.sh",
+	    "chmod +x /tmp/ansible.sh",
+	    "sudo /tmp/ansible.sh",
             "sudo /tmp/nginx.sh"
         ]
     }

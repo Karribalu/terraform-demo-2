@@ -2,7 +2,7 @@
 
 # sleep until instance is ready
 until [[ -f /var/lib/cloud/instance/boot-finished ]]; do
-  sleep 1
+  sleep 10
 done
 
 # install nginx
